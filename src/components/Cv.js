@@ -13,6 +13,7 @@ export class Cv extends React.Component {
     this.setState({
       arrExperience: [...this.state.arrExperience, { id: ++this.count }],
     });
+    this.props.addNewExperienceHandler(event, this.count);
   };
 
   removeButtonClicked = (event, experienceId) => {
@@ -32,14 +33,17 @@ export class Cv extends React.Component {
         key={element.id}
         id={element.id}
         onRemoveButton={this.removeButtonClicked}
+        experienceChangeHandler={this.props.experienceChangeHandler}
       />
     ));
     return (
       <div className="Cv">
         <GeneralInformation changeHandler={this.props.changeHandler} />
+
         {ExperienceItems}
+
         <button onClick={this.addExperienceButtonClicked}>
-          Add Experience Section{" "}
+          Add Experience Section
         </button>
       </div>
 

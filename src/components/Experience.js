@@ -12,6 +12,9 @@ export class Experience extends React.Component {
   };
 
   render() {
+    let experienceChangeHandler = this.props.experienceChangeHandler;
+
+    let id = this.props.id;
     return (
       <div className="Experience">
         <div className="alignHeader">
@@ -24,6 +27,9 @@ export class Experience extends React.Component {
               type="text"
               id="companyName"
               placeholder="Enter company name here"
+              onChange={(event) => {
+                experienceChangeHandler(event, id);
+              }}
             />
           </label>
 
@@ -33,17 +39,32 @@ export class Experience extends React.Component {
               type="text"
               id="position"
               placeholder="Enter your position"
+              onChange={(event) => {
+                experienceChangeHandler(event, id);
+              }}
             />
           </label>
 
           <label htmlFor="workStart">
             Worked From:
-            <input type="date" id="workStart" />
+            <input
+              type="date"
+              id="workStart"
+              onChange={(event) => {
+                experienceChangeHandler(event, id);
+              }}
+            />
           </label>
 
           <label htmlFor="workEnd">
             Work End:
-            <input type="date" id="workEnd" />
+            <input
+              type="date"
+              id="workEnd"
+              onChange={(event) => {
+                experienceChangeHandler(event, id);
+              }}
+            />
           </label>
         </form>
 

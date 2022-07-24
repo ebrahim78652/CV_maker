@@ -25,6 +25,7 @@ export class Cv extends React.Component {
     );
     console.log(updatedArrExperience);
     this.setState({ arrExperience: updatedArrExperience });
+    this.props.removeExperienceHandler(event, experienceId);
   };
 
   render() {

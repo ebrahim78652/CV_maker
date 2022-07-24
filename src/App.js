@@ -27,31 +27,21 @@ export class App extends React.Component {
   };
 
   experienceChangeHandler = (event, id) => {
-    console.log("app.js experienced changed");
-    console.log(event);
-    console.log(id);
     let experienceThatChanged = this.state.arrExperience.filter(
       (element) => element.id === id
     );
     experienceThatChanged[0][event.target.id] = event.target.value;
     //changing the specific attribute of the experience
-    console.log(experienceThatChanged);
     let currentArrExperience = this.state.arrExperience.map(
       (element) =>
         experienceThatChanged.find(
           (changedElement) => changedElement.id === element.id
         ) || element
     );
-
-    console.log(this.state.arrExperience);
     this.setState({ arrExperience: currentArrExperience });
-    console.log(this.state.arrExperience);
   };
 
   addNewExperienceHandler = (event, id) => {
-    console.log("add new experience handler called!");
-    console.log(event);
-    console.log(id);
     let currentArrExperience = this.state.arrExperience;
     currentArrExperience.push({
       id: id,
@@ -63,6 +53,14 @@ export class App extends React.Component {
     this.setState({ arrExperience: currentArrExperience });
   };
 
+  removeExperienceHandler = (event, id) => {
+    let currentArrExperience = this.state.arrExperience;
+    let updatedArrExperience = currentArrExperience.filter(
+      (element) => element.id !== id
+    );
+    this.setState({ arrExperience: updatedArrExperience });
+  };
+
   render() {
     return (
       <div className="App">
@@ -70,10 +68,10 @@ export class App extends React.Component {
           changeHandler={this.changeHandler}
           experienceChangeHandler={this.experienceChangeHandler}
           addNewExperienceHandler={this.addNewExperienceHandler}
+          removeExperienceHandler={this.removeExperienceHandler}
         />
 
         <div className="dividerLine"></div>
-
         <CVPreview
           name={this.state.name}
           phone={this.state.phone}
